@@ -9,6 +9,9 @@
 #import "AddToDoItemViewController.h"
 
 @interface AddToDoItemViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIDatePicker *dateSelector;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 @end
 
@@ -24,14 +27,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if (sender != self.saveButton)
+    {
+        return;
+    }
+    else
+    {
+        NSString *newItemText = [self.textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];//remove all blank space to make sure user didn't just enter spaces.
+        if (newItemText.length > 0) {
+            self.toDoItem = [[ToDoItem alloc] init];
+            self.toDoItem.itemName = self.textField.text;
+            self.toDoItem.completed = NO;
+            if (self.dateSelector.date > [NSDate date]) // check that deadline is past current date.
+                self.toDoItem.deadline = self.dateSelector.date;
+        }
+    }
+    
 }
-*/
+
 
 @end
