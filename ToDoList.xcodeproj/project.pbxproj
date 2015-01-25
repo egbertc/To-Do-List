@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		DC8CC1DF1A748D3000C8B4C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC1DE1A748D3000C8B4C8 /* main.m */; };
 		DC8CC1E21A748D3000C8B4C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC1E11A748D3000C8B4C8 /* AppDelegate.m */; };
-		DC8CC1E51A748D3000C8B4C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC1E41A748D3000C8B4C8 /* ViewController.m */; };
 		DC8CC1E81A748D3000C8B4C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8CC1E61A748D3000C8B4C8 /* Main.storyboard */; };
 		DC8CC1EA1A748D3000C8B4C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8CC1E91A748D3000C8B4C8 /* Images.xcassets */; };
 		DC8CC1ED1A748D3000C8B4C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC8CC1EB1A748D3000C8B4C8 /* LaunchScreen.xib */; };
 		DC8CC1F91A748D3100C8B4C8 /* ToDoListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC1F81A748D3100C8B4C8 /* ToDoListTests.m */; };
+		DC8CC2041A74B22900C8B4C8 /* AddToDoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC2031A74B22900C8B4C8 /* AddToDoItemViewController.m */; };
+		DC8CC2071A74B2DD00C8B4C8 /* ToDoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC2061A74B2DD00C8B4C8 /* ToDoListTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,16 @@
 		DC8CC1DE1A748D3000C8B4C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DC8CC1E01A748D3000C8B4C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DC8CC1E11A748D3000C8B4C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DC8CC1E31A748D3000C8B4C8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DC8CC1E41A748D3000C8B4C8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DC8CC1E71A748D3000C8B4C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DC8CC1E91A748D3000C8B4C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DC8CC1EC1A748D3000C8B4C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		DC8CC1F21A748D3100C8B4C8 /* ToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8CC1F71A748D3100C8B4C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC8CC1F81A748D3100C8B4C8 /* ToDoListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListTests.m; sourceTree = "<group>"; };
+		DC8CC2021A74B22900C8B4C8 /* AddToDoItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToDoItemViewController.h; sourceTree = "<group>"; };
+		DC8CC2031A74B22900C8B4C8 /* AddToDoItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToDoItemViewController.m; sourceTree = "<group>"; };
+		DC8CC2051A74B2DD00C8B4C8 /* ToDoListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoListTableViewController.h; sourceTree = "<group>"; };
+		DC8CC2061A74B2DD00C8B4C8 /* ToDoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +84,16 @@
 		DC8CC1DB1A748D3000C8B4C8 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				DC8CC2021A74B22900C8B4C8 /* AddToDoItemViewController.h */,
+				DC8CC2031A74B22900C8B4C8 /* AddToDoItemViewController.m */,
 				DC8CC1E01A748D3000C8B4C8 /* AppDelegate.h */,
 				DC8CC1E11A748D3000C8B4C8 /* AppDelegate.m */,
-				DC8CC1E31A748D3000C8B4C8 /* ViewController.h */,
-				DC8CC1E41A748D3000C8B4C8 /* ViewController.m */,
 				DC8CC1E61A748D3000C8B4C8 /* Main.storyboard */,
 				DC8CC1E91A748D3000C8B4C8 /* Images.xcassets */,
 				DC8CC1EB1A748D3000C8B4C8 /* LaunchScreen.xib */,
 				DC8CC1DC1A748D3000C8B4C8 /* Supporting Files */,
+				DC8CC2051A74B2DD00C8B4C8 /* ToDoListTableViewController.h */,
+				DC8CC2061A74B2DD00C8B4C8 /* ToDoListTableViewController.m */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				TargetAttributes = {
 					DC8CC1D81A748D3000C8B4C8 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 723KYE3F9E;
 					};
 					DC8CC1F11A748D3100C8B4C8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -219,9 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8CC1E51A748D3000C8B4C8 /* ViewController.m in Sources */,
 				DC8CC1E21A748D3000C8B4C8 /* AppDelegate.m in Sources */,
+				DC8CC2071A74B2DD00C8B4C8 /* ToDoListTableViewController.m in Sources */,
 				DC8CC1DF1A748D3000C8B4C8 /* main.m in Sources */,
+				DC8CC2041A74B22900C8B4C8 /* AddToDoItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
