@@ -17,6 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0], [UIColor blackColor], [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],NSForegroundColorAttributeName , [UIFont fontWithName:@"AmericanTypewriter" size:0.0], NSFontAttributeName, nil] ];
+    
+    UIImage *blackImage = [[UIImage imageNamed:@"black.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *blackWhiteImage = [[UIImage imageNamed:@"blackWhite.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBackgroundImage:blackWhiteImage forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:blackImage forBarMetrics:UIBarMetricsCompact];
     return YES;
 }
 

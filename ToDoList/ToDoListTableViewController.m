@@ -18,8 +18,16 @@
 
 @implementation ToDoListTableViewController
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    
+    
+}
+
 - (void) loadInitialData
 {
+    
+    
     ToDoItem *item1 = [[ToDoItem alloc] init];
     item1.itemName = @"Graduate";
     item1.deadline = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval)10000000];
@@ -180,6 +188,39 @@
     
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
     cell.textLabel.text = toDoItem.itemName;
+    if (toDoItem.deadline == nil)
+    {
+        cell.detailTextLabel.text = @"deadline: none";
+    }
+    else
+    {
+        // to get time until deadline: (helped by stack overflow)
+        NSUInteger flags = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date] toDate:toDoItem.deadline options:0];
+        
+        NSString *deadlineString;
+        if ([components day] > 0)
+        {
+            deadlineString = [NSString stringWithFormat:@"deadline: %ld days, %ld hours, and %ld minutes", [components day], [components hour], [components minute]];
+        }
+        else if ([components hour] > 0)
+        {
+            deadlineString = [NSString stringWithFormat:@"deadline: %ld hours, %ld minutes", [components hour], [components minute]];
+        }
+        else if ([components minute] > 0)
+        {
+            deadlineString = [NSString stringWithFormat:@"deadline: %ld minutes", [components minute]];
+        }
+        else
+        {
+            deadlineString = [NSString stringWithFormat:@"deadline: %ld seconds", [components second]];
+        }
+
+        
+        
+        cell.detailTextLabel.text = deadlineString;
+    }
+    
     
     if (toDoItem.completed)
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
