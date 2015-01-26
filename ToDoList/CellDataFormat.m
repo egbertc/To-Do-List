@@ -18,15 +18,23 @@
         deadlineString = @"complete.";
         return deadlineString;
     }
-    else if (item.deadline == nil)
+    else if (item.deadline == nil) // check for no deadline situtation
     {
         deadlineString = @"no deadline.";
         return deadlineString;
     }
     
     NSUInteger flags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date] toDate:item.deadline options:0];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date] toDate:item.deadline options:0]; // convert the deadline timestamp into useable count of months, days, hours, minutes and seconds
     
+    
+    /*
+     this following massive if statements covers most combinations of singular and plural units
+     only prints the 2 largest units because no one needs to know the exact second of a deadline that is 3 months into the future.
+     as the date approaches it gradually becomes more precise until it's just minutes and seconds.
+     
+     also accounts for past due. it negates all the values so that the units turn positive.
+     */
     
     if ([components month] > 0)
     {
@@ -49,8 +57,6 @@
             deadlineString =[NSString stringWithFormat:@"deadline: %ld days, %ld hours", [components day], [components hour]];
         else
             deadlineString = [NSString stringWithFormat:@"deadline: %ld days", [components day]];
-        
-        //deadlineString = [NSString stringWithFormat:@"deadline: %ld days, %ld hours, and %ld minutes", [components day], [components hour], [components minute]];
     }
     else if ([components hour] > 0)
     {
@@ -133,32 +139,30 @@
             deadlineString = [NSString stringWithFormat:@"OVERDUE: %ld seconds", -[components second]];
     }
     
-    return deadlineString;
+    return deadlineString; // returns the custom string
 }
 
 + (UIColor*) getBGColorForItem:(ToDoItem *)item
 {
     UIColor *cellBG;
     
-    
-    double secondsToDeadline = [item.deadline timeIntervalSinceNow];
+    double secondsToDeadline = [item.deadline timeIntervalSinceNow]; // how many seconds until deadline
     
     if(item.completed)
     {
-        cellBG = [UIColor colorWithRed:113.0/255.0 green:217.0/255.0 blue:161.0/255.0 alpha:1.0];
+        cellBG = [UIColor colorWithRed:113.0/255.0 green:217.0/255.0 blue:161.0/255.0 alpha:1.0]; // light greenish
     }
-    else if (item.deadline == nil)
+    else if (item.deadline == nil) // no deadline set
     {
-        //cellBG = ;
-        return [UIColor colorWithRed:59/255.0 green:151/255.0 blue:196/255.0 alpha:1.0];
+        return [UIColor colorWithRed:59/255.0 green:151/255.0 blue:196/255.0 alpha:1.0]; // blueish (same as nav bar)
     }
-    else if(secondsToDeadline <= 0.0)
+    else if(secondsToDeadline <= 0.0) // past due
     {
-        cellBG = [UIColor colorWithRed:237.0/255.0 green:128.0/255.0 blue:148.0/255.0 alpha:1.0];//UIColor *cellBG = [UIColor redColor];
+        cellBG = [UIColor colorWithRed:237.0/255.0 green:128.0/255.0 blue:148.0/255.0 alpha:1.0]; // light redish
     }
-    else
+    else // just a normal cell
     {
-        cellBG = [UIColor whiteColor];
+        cellBG = [UIColor whiteColor]; // white
     }
     
     return cellBG;

@@ -10,7 +10,7 @@
 
 @implementation ToDoItem
 
-- (id)init
+- (id)init // customized the constructor to auto fill creation date.
 {
     if (self = [super init])
     {

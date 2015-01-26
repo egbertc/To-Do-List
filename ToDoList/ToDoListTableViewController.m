@@ -14,7 +14,7 @@
 @interface ToDoListTableViewController ()
 
 @property NSMutableArray *toDoItems;
-@property NSString *sortMethod;
+@property NSString *sortMethod; // string to store most recent sort button press
 
 @end
 
@@ -22,7 +22,7 @@
 
 
 
-- (void) loadInitialData
+- (void) loadInitialData // load a bunch of items
 {
     ToDoItem *item0 = [[ToDoItem alloc] init];
     item0.itemName = @"Finish App";
@@ -143,45 +143,44 @@
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
-    AddToDoItemViewController *source = [segue sourceViewController];
-    ToDoItem *item = source.toDoItem;
+    AddToDoItemViewController *source = [segue sourceViewController]; // load other view controller
+    ToDoItem *item = source.toDoItem; // get item from other controller
     
-    if (item != nil)
+    if (item != nil) // if save was hit and text was inputed
     {
-        [self.toDoItems addObject:item];
-        [self.tableView reloadData];
+        [self.toDoItems addObject:item]; // add new item
+        [self.tableView reloadData]; // reload table view
 
-        if([_sortMethod  isEqual: @"deadline"])
+        if([_sortMethod  isEqual: @"deadline"]) // figure out how to sort it
             [self sortList:_deadlineSortButton];
         else
             [self sortList:_creationSortButton];    }
 }
 
-- (IBAction)sortList:(id)sender
+- (IBAction)sortList:(id)sender // sort the rows
 {
-    NSArray *unsortedList = [self.toDoItems copy];
-    NSArray *sortedList;
+    NSArray *unsortedList = [self.toDoItems copy]; // list before it's sorted
+    NSArray *sortedList; // new placeholder array
     
-    if ([sender isEqual:_deadlineSortButton])
+    if ([sender isEqual:_deadlineSortButton]) // which sort button was pressed
     {
-      //  NSLog(@"SORT BY DEADLINE");
-        _sortMethod = @"deadline";
+        _sortMethod = @"deadline"; // set sort property
         sortedList = [self.toDoItems sortedArrayUsingComparator:^NSComparisonResult(ToDoItem *itemA, ToDoItem *itemB) {
             return [itemA.deadline compare:itemB.deadline];
-        }];
+        }]; // sort by comparing the deadline attribute of the ToDoItem class
         
     }
     else
     {
-      //  NSLog(@"SORT BY CREATION");
-        _sortMethod = @"creation";
+        _sortMethod = @"creation"; // set sort property
         sortedList = [self.toDoItems sortedArrayUsingComparator:^NSComparisonResult(ToDoItem *itemA, ToDoItem *itemB) {
             return [itemA.creationDate compare:itemB.creationDate];
-        }];
+        }]; // sort by comparing the creationDate attribut of ToDoItem class
         
     }
-    self.toDoItems = [sortedList mutableCopy];
-    //[self.tableView reloadData];
+    self.toDoItems = [sortedList mutableCopy]; // copy the placeholder array into the main array
+    
+    //[self.tableView reloadData]; // this would be called to instantly reload the tableview in the newly sorted order
     
     
     /*
@@ -193,38 +192,38 @@
     [self.tableView beginUpdates];
     
     NSInteger sourceRow = 0;
-    for (NSString *item in unsortedList)
+    for (NSString *item in unsortedList) //cycle through all the original items (pre sorted)
     {
-        NSInteger destRow = [self.toDoItems indexOfObject:item];
+        NSInteger destRow = [self.toDoItems indexOfObject:item]; // find where row should be
         
-        if (destRow != sourceRow) {
-            // Move the rows within the table view
+        if (destRow != sourceRow) // if not in correct spot
+        {
             NSIndexPath *sourceIndexPath = [NSIndexPath indexPathForItem:sourceRow inSection:0];
             NSIndexPath *destIndexPath = [NSIndexPath indexPathForItem:destRow inSection:0];
-            [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destIndexPath];
+            [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destIndexPath]; // move from starting slot to ending slot
             
         }
-        sourceRow++;
+        sourceRow++; // increment pointer
     }
     
-    // Commit animations
-    [self.tableView endUpdates];
+    
+    [self.tableView endUpdates]; // finish the animation block.
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _sortMethod = @"deadline";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    _sortMethod = @"deadline"; // set default sort to by deadline
     self.toDoItems = [[NSMutableArray alloc] init];
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0]];
-    [self loadInitialData];
-    [self sortList:_deadlineSortButton];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0]]; // darken cell separator color (better look when 2 colored cells are adjacent)
+    [self loadInitialData]; // load all the preset cells
+    [self sortList:_deadlineSortButton]; // sort by deadline
 }
 
 - (void)didReceiveMemoryWarning {
@@ -248,34 +247,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
-    ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
-    cell.textLabel.text = toDoItem.itemName;
+    ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row]; // get item object for current row
+    cell.textLabel.text = toDoItem.itemName; // set cell text to to do item string
     
+    cell.detailTextLabel.text = [CellDataFormat getDeadlineStringForItem:toDoItem]; // set detail text to deadline string
+    [cell setBackgroundColor:[CellDataFormat getBGColorForItem:toDoItem]]; // set cell bg color
     
-    cell.detailTextLabel.text = [CellDataFormat getDeadlineStringForItem:toDoItem];
-    
-    
-    [cell setBackgroundColor:[CellDataFormat getBGColorForItem:toDoItem]];
-    
-    
-    if (toDoItem.completed)
+    if (toDoItem.completed) // if marked as completed
     {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
-        [cell.textLabel setTextColor:[UIColor whiteColor]];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark; // display checkmark
+        [cell.textLabel setTextColor:[UIColor whiteColor]]; //change text to white
         [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
     }
-    else
+    else // not completed
     {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        if(cell.backgroundColor == [UIColor whiteColor])
+        cell.accessoryType = UITableViewCellAccessoryNone; // no checkmark
+        if(cell.backgroundColor == [UIColor whiteColor]) // if bg color is white ( so if it's not a passed due or 'no deadline' task which would be red or blue)
         {
-            [cell.textLabel setTextColor:[UIColor blackColor]];
+            [cell.textLabel setTextColor:[UIColor blackColor]]; // set text color to black
             [cell.detailTextLabel setTextColor:[UIColor blackColor]];
         }
         else
         {
-            [cell.textLabel setTextColor:[UIColor whiteColor]];
+            [cell.textLabel setTextColor:[UIColor whiteColor]]; // set text color to white for passed due or no deadline tasks
             [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
         }
         
@@ -334,7 +328,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath // set task as completed or not completed if tapped
 {
     ToDoItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
     tappedItem.completed = !tappedItem.completed;

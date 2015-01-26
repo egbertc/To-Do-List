@@ -17,15 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    // Override point for customization after application launch.
-    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack]; // change the header icons (clock, battery, etc..) to white
         
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0],NSForegroundColorAttributeName, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0], [UIColor blackColor], [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],NSForegroundColorAttributeName , [UIFont fontWithName:@"AmericanTypewriter" size:0.0], NSFontAttributeName, nil] ];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0],NSForegroundColorAttributeName, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0], [UIColor blackColor], [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],NSForegroundColorAttributeName , [UIFont fontWithName:@"Helvetica" size:0.0], NSFontAttributeName, nil] ]; // change font attributes of title in nav bar (set to dark gray color)
     
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:59/255.0 green:151/255.0 blue:196/255.0 alpha:1.0] ];
-    //[[UINavigationBar appearance] setTranslucent:NO];
-
-    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:59/255.0 green:151/255.0 blue:196/255.0 alpha:1.0] ]; // set nav bar bg to blueish
+        
     return YES;
 }
 
