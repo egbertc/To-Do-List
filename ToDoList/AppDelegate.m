@@ -20,7 +20,7 @@
     // Override point for customization after application launch.
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
         
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0],NSForegroundColorAttributeName, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0], [UIColor blackColor], [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],NSForegroundColorAttributeName , [UIFont fontWithName:@"AmericanTypewriter" size:0.0], NSFontAttributeName, nil] ];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0],NSForegroundColorAttributeName, [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0], [UIColor blackColor], [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],NSForegroundColorAttributeName , [UIFont fontWithName:@"AmericanTypewriter" size:0.0], NSFontAttributeName, nil] ];
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:59/255.0 green:151/255.0 blue:196/255.0 alpha:1.0] ];
     //[[UINavigationBar appearance] setTranslucent:NO];

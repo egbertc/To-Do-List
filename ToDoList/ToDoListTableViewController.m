@@ -166,7 +166,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     self.toDoItems = [[NSMutableArray alloc] init];
-    
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0]];
     [self loadInitialData];
 }
 
@@ -197,12 +197,13 @@
     
     cell.detailTextLabel.text = [CellDataFormat getDeadlineStringForItem:toDoItem];
     
+    
     [cell setBackgroundColor:[CellDataFormat getBGColorForItem:toDoItem]];
+    
     
     if (toDoItem.completed)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
     }
     else
     {
