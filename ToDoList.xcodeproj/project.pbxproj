@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC7FCF471A7601DB005E89D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7FCF461A7601DB005E89D2 /* Images.xcassets */; };
 		DC8CC1DF1A748D3000C8B4C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC1DE1A748D3000C8B4C8 /* main.m */; };
 		DC8CC1E21A748D3000C8B4C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC1E11A748D3000C8B4C8 /* AppDelegate.m */; };
 		DC8CC1E81A748D3000C8B4C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC8CC1E61A748D3000C8B4C8 /* Main.storyboard */; };
@@ -15,7 +16,7 @@
 		DC8CC2041A74B22900C8B4C8 /* AddToDoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC2031A74B22900C8B4C8 /* AddToDoItemViewController.m */; };
 		DC8CC2071A74B2DD00C8B4C8 /* ToDoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC2061A74B2DD00C8B4C8 /* ToDoListTableViewController.m */; };
 		DC8CC20A1A74BD4400C8B4C8 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CC2091A74BD4400C8B4C8 /* ToDoItem.m */; };
-		DC8CC20C1A74EE7900C8B4C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8CC20B1A74EE7900C8B4C8 /* Images.xcassets */; };
+		DCD8B0991A75E9F800ACCF43 /* CellDataFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD8B0981A75E9F800ACCF43 /* CellDataFormat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC7FCF461A7601DB005E89D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DC8CC1D91A748D3000C8B4C8 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8CC1DD1A748D3000C8B4C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC8CC1DE1A748D3000C8B4C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,7 +47,8 @@
 		DC8CC2061A74B2DD00C8B4C8 /* ToDoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoListTableViewController.m; sourceTree = "<group>"; };
 		DC8CC2081A74BD4400C8B4C8 /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
 		DC8CC2091A74BD4400C8B4C8 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
-		DC8CC20B1A74EE7900C8B4C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DCD8B0971A75E9F800ACCF43 /* CellDataFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellDataFormat.h; sourceTree = "<group>"; };
+		DCD8B0981A75E9F800ACCF43 /* CellDataFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellDataFormat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +95,13 @@
 				DC8CC1E01A748D3000C8B4C8 /* AppDelegate.h */,
 				DC8CC1E11A748D3000C8B4C8 /* AppDelegate.m */,
 				DC8CC1E61A748D3000C8B4C8 /* Main.storyboard */,
-				DC8CC20B1A74EE7900C8B4C8 /* Images.xcassets */,
 				DC8CC1EB1A748D3000C8B4C8 /* LaunchScreen.xib */,
+				DC7FCF461A7601DB005E89D2 /* Images.xcassets */,
 				DC8CC1DC1A748D3000C8B4C8 /* Supporting Files */,
 				DC8CC2051A74B2DD00C8B4C8 /* ToDoListTableViewController.h */,
 				DC8CC2061A74B2DD00C8B4C8 /* ToDoListTableViewController.m */,
+				DCD8B0971A75E9F800ACCF43 /* CellDataFormat.h */,
+				DCD8B0981A75E9F800ACCF43 /* CellDataFormat.m */,
 				DC8CC2081A74BD4400C8B4C8 /* ToDoItem.h */,
 				DC8CC2091A74BD4400C8B4C8 /* ToDoItem.m */,
 			);
@@ -210,7 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC8CC20C1A74EE7900C8B4C8 /* Images.xcassets in Resources */,
+				DC7FCF471A7601DB005E89D2 /* Images.xcassets in Resources */,
 				DC8CC1E81A748D3000C8B4C8 /* Main.storyboard in Resources */,
 				DC8CC1ED1A748D3000C8B4C8 /* LaunchScreen.xib in Resources */,
 			);
@@ -234,6 +239,7 @@
 				DC8CC20A1A74BD4400C8B4C8 /* ToDoItem.m in Sources */,
 				DC8CC2071A74B2DD00C8B4C8 /* ToDoListTableViewController.m in Sources */,
 				DC8CC1DF1A748D3000C8B4C8 /* main.m in Sources */,
+				DCD8B0991A75E9F800ACCF43 /* CellDataFormat.m in Sources */,
 				DC8CC2041A74B22900C8B4C8 /* AddToDoItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +435,7 @@
 				DC8CC1FE1A748D3100C8B4C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DC8CC1FF1A748D3100C8B4C8 /* Build configuration list for PBXNativeTarget "ToDoListTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +444,7 @@
 				DC8CC2011A748D3100C8B4C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

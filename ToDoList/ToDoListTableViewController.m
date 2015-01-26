@@ -9,6 +9,7 @@
 #import "ToDoListTableViewController.h"
 #import "ToDoItem.h"
 #import "AddToDoItemViewController.h"
+#import "CellDataFormat.h"
 
 @interface ToDoListTableViewController ()
 
@@ -26,7 +27,10 @@
 
 - (void) loadInitialData
 {
-    
+    ToDoItem *item0 = [[ToDoItem alloc] init];
+    item0.itemName = @"Finish App";
+    item0.deadline = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval)-5000];
+    item0.priority = [NSNumber numberWithInt:3];
     
     ToDoItem *item1 = [[ToDoItem alloc] init];
     item1.itemName = @"Graduate";
@@ -118,6 +122,7 @@
     item18.deadline = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval)99000000];
     item18.priority = [NSNumber numberWithInt:3];
     
+    [self.toDoItems addObject:item0];
     [self.toDoItems addObject:item1];
     [self.toDoItems addObject:item2];
     [self.toDoItems addObject:item3];
@@ -188,47 +193,28 @@
     
     ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
     cell.textLabel.text = toDoItem.itemName;
-    if (toDoItem.deadline == nil)
-    {
-        cell.detailTextLabel.text = @"deadline: none";
-    }
-    else
-    {
-        // to get time until deadline: (helped by stack overflow)
-        NSUInteger flags = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date] toDate:toDoItem.deadline options:0];
-        
-        NSString *deadlineString;
-        if ([components day] > 0)
-        {
-            deadlineString = [NSString stringWithFormat:@"deadline: %ld days, %ld hours, and %ld minutes", [components day], [components hour], [components minute]];
-        }
-        else if ([components hour] > 0)
-        {
-            deadlineString = [NSString stringWithFormat:@"deadline: %ld hours, %ld minutes", [components hour], [components minute]];
-        }
-        else if ([components minute] > 0)
-        {
-            deadlineString = [NSString stringWithFormat:@"deadline: %ld minutes", [components minute]];
-        }
-        else
-        {
-            deadlineString = [NSString stringWithFormat:@"deadline: %ld seconds", [components second]];
-        }
-
-        
-        
-        cell.detailTextLabel.text = deadlineString;
-    }
     
+    
+    cell.detailTextLabel.text = [CellDataFormat getDeadlineStringForItem:toDoItem];
+    
+    [cell setBackgroundColor:[CellDataFormat getBGColorForItem:toDoItem]];
     
     if (toDoItem.completed)
+    {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+    }
     else
+    {
         cell.accessoryType = UITableViewCellAccessoryNone;
+        
+    }
     
     return cell;
 }
+
+
+
 
 
 /*

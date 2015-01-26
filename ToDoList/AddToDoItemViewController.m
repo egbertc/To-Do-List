@@ -17,6 +17,15 @@
 
 @implementation AddToDoItemViewController
 
+-(BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+    if (theTextField == self.textField)
+    {
+        [theTextField resignFirstResponder];
+    }
+    return YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

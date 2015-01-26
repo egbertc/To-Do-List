@@ -43,6 +43,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="To-Do List" id="4ae-UQ-0X7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KPN-un-5Bh">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="4J2-MD-tU8" kind="presentation" id="NOa-Yk-6Wo"/>
                             </connections>
@@ -69,6 +70,9 @@
                                 <rect key="frame" x="16" y="102" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kzz-Jt-gka"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gk2-d7-7r0">
                                 <rect key="frame" x="16" y="176" width="568" height="162"/>
@@ -116,11 +120,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Item" id="x3H-uS-F2S">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cBM-Ve-OtY">
+                            <color key="tintColor" red="0.95615949011001011" green="1" blue="0.98818189658775446" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="tYc-sa-3CO" kind="unwind" unwindAction="unwindToList:" id="IpI-U7-vJh"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="hhw-9h-Pjg">
+                            <color key="tintColor" red="0.95615949011001011" green="1" blue="0.98818189658775446" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="tYc-sa-3CO" kind="unwind" unwindAction="unwindToList:" id="FaS-MG-Dtv"/>
                             </connections>
