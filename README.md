@@ -7,10 +7,10 @@ EXTRAS:
 - sort by either deadline (default) or created date
     complete with cool little sort animation
 - color coded
-    green = completed
-    red = past due
-    white = normal
-    blue = no deadline
+    green = completed;
+    red = past due;
+    white = normal;
+    blue = no deadline;
 - custom nav bar colors
     
 I think that's all... it's late and I can't remember.
