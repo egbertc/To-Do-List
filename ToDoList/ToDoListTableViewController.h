@@ -11,5 +11,10 @@
 @interface ToDoListTableViewController : UITableViewController
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+- (IBAction)sortList:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *creationSortButton;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deadlineSortButton;
 
 @end

@@ -28,7 +28,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.dateSelector setMinimumDate:[NSDate date]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,8 +61,10 @@
             self.toDoItem = [[ToDoItem alloc] init];
             self.toDoItem.itemName = self.textField.text;
             self.toDoItem.completed = NO;
-            if (self.dateSelector.date > [NSDate date]) // check that deadline is past current date.
+            if ([self.dateSelector.date compare:[NSDate date]] == NSOrderedDescending) // check that deadline is past current date.
                 self.toDoItem.deadline = self.dateSelector.date;
+            else
+                NSLog(@"time travel not yet possible: no deadline set.");
         }
     }
     

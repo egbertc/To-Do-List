@@ -10,4 +10,13 @@
 
 @implementation ToDoItem
 
+- (id)init
+{
+    if (self = [super init])
+    {
+        _creationDate = [NSDate date];
+    }
+    return self;
+}
+
 @end

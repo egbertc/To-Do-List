@@ -14,16 +14,13 @@
 @interface ToDoListTableViewController ()
 
 @property NSMutableArray *toDoItems;
+@property NSString *sortMethod;
 
 @end
 
 @implementation ToDoListTableViewController
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    
-    
-}
+
 
 - (void) loadInitialData
 {
@@ -153,12 +150,71 @@
     {
         [self.toDoItems addObject:item];
         [self.tableView reloadData];
+
+        if([_sortMethod  isEqual: @"deadline"])
+            [self sortList:_deadlineSortButton];
+        else
+            [self sortList:_creationSortButton];    }
+}
+
+- (IBAction)sortList:(id)sender
+{
+    NSArray *unsortedList = [self.toDoItems copy];
+    NSArray *sortedList;
+    
+    if ([sender isEqual:_deadlineSortButton])
+    {
+      //  NSLog(@"SORT BY DEADLINE");
+        _sortMethod = @"deadline";
+        sortedList = [self.toDoItems sortedArrayUsingComparator:^NSComparisonResult(ToDoItem *itemA, ToDoItem *itemB) {
+            return [itemA.deadline compare:itemB.deadline];
+        }];
+        
     }
+    else
+    {
+      //  NSLog(@"SORT BY CREATION");
+        _sortMethod = @"creation";
+        sortedList = [self.toDoItems sortedArrayUsingComparator:^NSComparisonResult(ToDoItem *itemA, ToDoItem *itemB) {
+            return [itemA.creationDate compare:itemB.creationDate];
+        }];
+        
+    }
+    self.toDoItems = [sortedList mutableCopy];
+    //[self.tableView reloadData];
+    
+    
+    /*
+     found cool animated sort example.
+     source: http://blog.neuwert-media.com/2013/05/animated-sorting-in-uitableview/
+     */
+    
+    
+    [self.tableView beginUpdates];
+    
+    NSInteger sourceRow = 0;
+    for (NSString *item in unsortedList)
+    {
+        NSInteger destRow = [self.toDoItems indexOfObject:item];
+        
+        if (destRow != sourceRow) {
+            // Move the rows within the table view
+            NSIndexPath *sourceIndexPath = [NSIndexPath indexPathForItem:sourceRow inSection:0];
+            NSIndexPath *destIndexPath = [NSIndexPath indexPathForItem:destRow inSection:0];
+            [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destIndexPath];
+            
+        }
+        sourceRow++;
+    }
+    
+    // Commit animations
+    [self.tableView endUpdates];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _sortMethod = @"deadline";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -168,6 +224,7 @@
     self.toDoItems = [[NSMutableArray alloc] init];
     [self.tableView setSeparatorColor:[UIColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0]];
     [self loadInitialData];
+    [self sortList:_deadlineSortButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -204,10 +261,23 @@
     if (toDoItem.completed)
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        [cell.textLabel setTextColor:[UIColor whiteColor]];
+        [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
     }
     else
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
+        if(cell.backgroundColor == [UIColor whiteColor])
+        {
+            [cell.textLabel setTextColor:[UIColor blackColor]];
+            [cell.detailTextLabel setTextColor:[UIColor blackColor]];
+        }
+        else
+        {
+            [cell.textLabel setTextColor:[UIColor whiteColor]];
+            [cell.detailTextLabel setTextColor:[UIColor whiteColor]];
+        }
         
     }
     

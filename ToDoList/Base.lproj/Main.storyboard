@@ -13,6 +13,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" barStyle="black" id="Agg-oN-XFL">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.59999999999999964"/>
+                            <items>
+                                <barButtonItem systemItem="flexibleSpace" id="g1E-2S-K7p"/>
+                                <barButtonItem title="by deadline" id="RHV-Jy-Rxl">
+                                    <color key="tintColor" red="0.87202099116161613" green="0.87202099116161613" blue="0.87202099116161613" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="sortList:" destination="ihk-LN-nP4" id="aGJ-8n-hkm"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="DND-Xi-nPZ"/>
+                                <barButtonItem title="by creation" style="plain" id="bcy-9c-wbG">
+                                    <color key="tintColor" red="0.87202099116161613" green="0.87202099116161613" blue="0.87202099116161613" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="sortList:" destination="ihk-LN-nP4" id="4Ia-r8-aZU"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="Tqd-QJ-u3V"/>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ListPrototypeCell" textLabel="JNm-6j-CAf" detailTextLabel="qPK-Qj-eJm" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="Ox4-Dn-B9i">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -38,9 +60,10 @@
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="ihk-LN-nP4" id="cgw-6z-r7M"/>
-                            <outlet property="delegate" destination="ihk-LN-nP4" id="RKb-IU-XYM"/>
+                            <outlet property="delegate" destination="ihk-LN-nP4" id="i4A-pc-3sJ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="To-Do List" id="4ae-UQ-0X7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KPN-un-5Bh">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,6 +72,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="creationSortButton" destination="bcy-9c-wbG" id="uZL-vY-exO"/>
+                        <outlet property="deadlineSortButton" destination="RHV-Jy-Rxl" id="LMv-zj-Po3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DK-V4-TPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

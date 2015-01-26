@@ -12,20 +12,23 @@
 
 + (NSString*) getDeadlineStringForItem:(ToDoItem *)item
 {
-    NSUInteger flags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date] toDate:item.deadline options:0];
-    
     NSString *deadlineString;
-    
     if (item.completed)
     {
         deadlineString = @"complete.";
+        return deadlineString;
     }
     else if (item.deadline == nil)
     {
-        deadlineString = @"deadline: none";
+        deadlineString = @"no deadline.";
+        return deadlineString;
     }
-    else if ([components month] > 0)
+    
+    NSUInteger flags = NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:flags fromDate:[NSDate date] toDate:item.deadline options:0];
+    
+    
+    if ([components month] > 0)
     {
         if([components month] == 1 && [components day] > 1)
             deadlineString =[NSString stringWithFormat:@"deadline: 1 month, %ld days", [components day]];
@@ -136,11 +139,18 @@
 + (UIColor*) getBGColorForItem:(ToDoItem *)item
 {
     UIColor *cellBG;
+    
+    
     double secondsToDeadline = [item.deadline timeIntervalSinceNow];
     
     if(item.completed)
     {
         cellBG = [UIColor colorWithRed:113.0/255.0 green:217.0/255.0 blue:161.0/255.0 alpha:1.0];
+    }
+    else if (item.deadline == nil)
+    {
+        //cellBG = ;
+        return [UIColor colorWithRed:59/255.0 green:151/255.0 blue:196/255.0 alpha:1.0];
     }
     else if(secondsToDeadline <= 0.0)
     {
